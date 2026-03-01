@@ -113,7 +113,7 @@ jobs:
           rm -f "$KEYTOOL_LOG"
           echo "✅ Keystore and credentials validated."
 
-      - name: Decode GDrive OAuth2 secrets
+     # - name: Decode GDrive OAuth2 secrets
         run: |
           echo "🔐 Decoding GDRIVE_OAUTH2..."
           DECODED=$(echo "${{ secrets.GDRIVE_OAUTH2 }}" | base64 -d)
@@ -129,7 +129,7 @@ jobs:
           
           echo "✅ GDRIVE_CLIENT_ID and GDRIVE_REFRESH_TOKEN extracted from GDRIVE_OAUTH2"
 
-      - name: Retrieving Google Drive access token
+     # - name: Retrieving Google Drive access token
         run: |
           echo "🔐 Getting Google OAuth2 access token..."
           TOKEN_RESPONSE=$(curl -s -X POST https://oauth2.googleapis.com/token \
@@ -203,7 +203,7 @@ jobs:
           mv app/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
           mv wear/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
 
-      - name: Upload APKs to Google Drive
+    #  - name: Upload APKs to Google Drive
         run: |
           set -e
           echo "🔐 Start uploading APKs to Google Drive..."
